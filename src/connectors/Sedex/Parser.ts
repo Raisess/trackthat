@@ -7,11 +7,11 @@ export default class SedexConnectorParser implements IParser {
 
   private parseHTML(html: HTMLElement): Array<string[]> {
     const statusLines: HTMLCollection = html.children!;
-    const temp: Array<string> = [];
-
-    for (const statusLine of statusLines) {
-      temp.push(statusLine.textContent!.replace(/\t/g, ""));
-    }
+    const temp: Array<string> = (
+      Array.from(statusLines) as Array<HTMLElement>
+    ).map((statusLine: HTMLElement): string =>
+      statusLine.textContent!.replace(/\t/g, ""),
+    );
 
     const relevantData: Array<string[]> = temp
       .filter((v: string): boolean => v !== "")
