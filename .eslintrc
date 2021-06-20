@@ -12,7 +12,6 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "comma-dangle": ["error", "only-multiline"],
-    "semi": ["error", "always"],
     "quotes": ["error", "double"],
     "arrow-parens": ["error", "as-needed"],
     "object-curly-newline": [
