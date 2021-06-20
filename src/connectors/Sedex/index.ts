@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch, { Response } from "node-fetch";
 import { JSDOM } from "jsdom";
 
 import IConnector, { Tracks } from "../IConnector";
@@ -13,7 +13,7 @@ export default class SedexConnector extends SedexConnectorParser implements ICon
   }
 
   private async fetchSedexApiToGetLocation(code: string): Promise<Tracks> {
-    const response: any = await fetch(
+    const response: Response = await fetch(
       `https://rastreadorcorreios.com.br/?rastreio=${code}`,
     );
 
