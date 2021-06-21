@@ -1,4 +1,5 @@
 import IConnector, { Tracks } from "./connectors/IConnector";
+import InvalidConnectorException from "./exceptions/InvalidConnectorException";
 
 import Tracker from "./Tracker";
 import SedexConnector from "./connectors/Sedex";
@@ -23,9 +24,7 @@ export default class Cli {
       (c: IConnector) => c.name.toLowerCase() === this.connector.toLowerCase(),
     );
 
-    if (!connector) {
-      throw new Error("Invalid connector!");
-    }
+    if (!connector) throw new InvalidConnectorException();
 
     const tracker: Tracker = new Tracker(this.code, connector!);
 
