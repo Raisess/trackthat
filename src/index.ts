@@ -1,5 +1,11 @@
 import Cli from "./Cli";
 
 (async (): Promise<void> => {
-  await new Cli().execute();
+  try {
+    await new Cli().execute();
+    process.exit(0);
+  } catch (e) {
+    console.error("Error:", e.message);
+    process.exit(1);
+  }
 })();
