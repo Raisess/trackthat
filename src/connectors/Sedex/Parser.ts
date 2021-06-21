@@ -18,9 +18,10 @@ export default class SedexConnectorParser implements IParser {
       .map(
         (v: string): Array<string> =>
           v.split(/\n/).filter((v: string): boolean => v !== ""),
-      );
+      )
+      .slice(1);
 
-    return relevantData.slice(1);
+    return relevantData;
   }
 
   private parseData(data: Array<string[]>): Tracks {
